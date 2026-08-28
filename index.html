@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星游记 | 个人技术与生活博客</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- 顶部导航栏 / Header -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon"><i class="fa-solid fa-feather-pointed"></i></span>
+                <span class="logo-text">星游记<span class="dot">.</span></span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#hero" class="nav-item active"><i class="fa-solid fa-house"></i> 首页</a>
+                <a href="#articles" class="nav-item"><i class="fa-solid fa-book-open"></i> 文章</a>
+                <a href="#about" class="nav-item"><i class="fa-solid fa-user"></i> 关于我</a>
+                <a href="#newsletter" class="nav-item"><i class="fa-solid fa-paper-plane"></i> 订阅</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="icon-btn" title="切换暗黑/白天模式">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button id="mobile-menu-btn" class="icon-btn mobile-only" title="菜单">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 移动端侧边导航菜单 -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <button id="close-drawer-btn" class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+        <div class="drawer-links">
+            <a href="#hero" class="drawer-item"><i class="fa-solid fa-house"></i> 首页</a>
+            <a href="#articles" class="drawer-item"><i class="fa-solid fa-book-open"></i> 文章博文</a>
+            <a href="#about" class="drawer-item"><i class="fa-solid fa-user"></i> 关于作者</a>
+            <a href="#newsletter" class="drawer-item"><i class="fa-solid fa-paper-plane"></i> 邮件订阅</a>
+        </div>
+    </div>
+
+    <!-- Hero 视觉焦点 Banner -->
+    <section id="hero" class="hero-section">
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+        <div class="container hero-container">
+            <div class="hero-badge">
+                <span class="pulse"></span> 探索技术、设计与代码灵感
+            </div>
+            <h1 class="hero-title">记录思维火花，<br><span class="gradient-text">探索未知的代码宇宙</span></h1>
+            <p class="hero-subtitle">
+                欢迎来到我的个人博客。这里是我分享前端开发、AI应用、全栈架构以及对生活与审美思考的独立小天地。
+            </p>
+            <div class="hero-buttons">
+                <a href="#articles" class="btn btn-primary"><i class="fa-solid fa-compass"></i> 浏览最新文章</a>
+                <a href="#about" class="btn btn-secondary"><i class="fa-solid fa-circle-info"></i> 了解作者</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-num" id="stat-articles">12+</span>
+                    <span class="stat-label">深度精选文章</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-num">50K+</span>
+                    <span class="stat-label">累计阅读量</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-num">99.9%</span>
+                    <span class="stat-label">对代码的热爱</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 文章分类 & 搜索区域 -->
+    <section id="articles" class="articles-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">BLOG POSTS</div>
+                <h2 class="section-title">精选博文与随笔</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="filter-search-wrapper">
+                <!-- 搜索框 -->
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="search-input" placeholder="搜索关键词（如：React, CSS, AI, 前端）...">
+                    <button id="clear-search" class="clear-btn" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <!-- 分类标签 -->
+                <div class="category-tags" id="category-tags">
+                    <button class="tag-btn active" data-category="all"><i class="fa-solid fa-border-all"></i> 全部 (All)</button>
+                    <button class="tag-btn" data-category="tech"><i class="fa-solid fa-code"></i> 前端技术</button>
+                    <button class="tag-btn" data-category="ai"><i class="fa-solid fa-robot"></i> AI 与未来</button>
+                    <button class="tag-btn" data-category="design"><i class="fa-solid fa-palette"></i> UI/UX 设计</button>
+                    <button class="tag-btn" data-category="life"><i class="fa-solid fa-coffee"></i> 随笔思考</button>
+                </div>
+            </div>
+
+            <!-- 文章列表网格 -->
+            <div class="articles-grid" id="articles-grid">
+                <!-- JS 动态加载文章列表卡片 -->
+            </div>
+
+            <!-- 空结果提示 -->
+            <div class="no-results" id="no-results" style="display: none;">
+                <i class="fa-solid fa-ghost no-results-icon"></i>
+                <h3>未找到相关文章</h3>
+                <p>尝试搜索其他关键词或选择不同的分类标签吧！</p>
+                <button class="btn btn-secondary" id="reset-filter-btn">重置筛选</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于作者 Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-card glass-card">
+                <div class="about-avatar-wrapper">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" alt="作者头像" class="about-avatar">
+                    <div class="status-indicator" title="正在快乐敲代码中"></div>
+                </div>
+                <div class="about-content">
+                    <div class="about-tag">ABOUT ME</div>
+                    <h2 class="about-name">Alex Lin / 独立开发者 & 设计师</h2>
+                    <p class="about-bio">
+                        嗨！我是 Alex，一名热衷于构建极简、美观且高效 Web 体验的前端工程师与 UI 设计爱好者。我钟爱用现代前端栈（React, Vue, Tailwind, TypeScript）打造赏心悦目的产品，同时探索大语言模型（LLM）在创作与效率工具中的可能性。
+                    </p>
+                    <div class="skills-wrapper">
+                        <span class="skill-badge"><i class="fa-brands fa-react"></i> React</span>
+                        <span class="skill-badge"><i class="fa-brands fa-js"></i> JavaScript / TS</span>
+                        <span class="skill-badge"><i class="fa-brands fa-css3-alt"></i> CSS3 & Modern UI</span>
+                        <span class="skill-badge"><i class="fa-solid fa-brain"></i> AI Engineering</span>
+                        <span class="skill-badge"><i class="fa-brands fa-node-js"></i> Node.js</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="social-icon" title="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" class="social-icon" title="知乎"><i class="fa-solid fa-globe"></i></a>
+                        <a href="#" class="social-icon" title="邮箱联系"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 订阅 Newsletter Section -->
+    <section id="newsletter" class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-box glass-card">
+                <div class="newsletter-content">
+                    <div class="newsletter-icon"><i class="fa-regular fa-paper-plane"></i></div>
+                    <h2>订阅我的每周精选周刊</h2>
+                    <p>不发送垃圾邮件。每周日静候在你的收件箱，分享最值得阅读的技术干货与创意灵感。</p>
+                    <form class="newsletter-form" id="newsletter-form">
+                        <input type="email" id="newsletter-email" placeholder="输入你的电子邮箱地址..." required>
+                        <button type="submit" class="btn btn-primary">立即订阅 <i class="fa-solid fa-arrow-right"></i></button>
+                    </form>
+                    <div class="form-toast" id="newsletter-toast"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 / Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <span class="logo-icon"><i class="fa-solid fa-feather-pointed"></i></span>
+                    <span class="logo-text">星游记<span class="dot">.</span></span>
+                </a>
+                <p>用心记录每一次代码灵感与生活见闻。</p>
+            </div>
+            <div class="footer-copy">
+                <p>&copy; <span id="current-year"></span> 星游记 Blog. Designed with <i class="fa-solid fa-heart" style="color: #ef4444;"></i> for Creators.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 文章详情阅读 Modal 模态框 -->
+    <div class="modal-backdrop" id="article-modal">
+        <div class="modal-card glass-card">
+            <button class="modal-close" id="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-body" id="modal-content">
+                <!-- 由 JS 填充文章完整内容 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 悬浮控制按钮：回到顶部 -->
+    <button id="back-to-top" class="back-to-top-btn" title="返回顶部">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
